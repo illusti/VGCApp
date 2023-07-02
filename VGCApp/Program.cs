@@ -33,6 +33,8 @@ namespace VGCApp
                 app.UseHsts();
             }
 
+            app.UseRequestLocalization("en-US");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

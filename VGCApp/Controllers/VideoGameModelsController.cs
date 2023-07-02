@@ -64,7 +64,7 @@ namespace VGCApp.Controllers
             return View(review);
         }
 
-        private void PopulateReviewList(VideoGameModel videoGame = null)
+        private void PopulateReviewList(VideoGameModel videoGame)
         {
             var reviewQuery = from d in _context.Reviews
                                    where d.VideoGameModelID == videoGame.ID
