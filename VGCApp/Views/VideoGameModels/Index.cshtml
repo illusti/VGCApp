@@ -1,0 +1,81 @@
+﻿@model PaginatedList<VGCApp.Models.VideoGameModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Video Game list</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Genre
+            </th>
+            <th>
+                Release Date
+            </th>
+            <th>
+               Price
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if(Model.TotalPages > 1)
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            @for(int i = 1; i <= Model.TotalPages; i++)
+            {
+                var activePage = Model.PageIndex == i ? "active" : "";
+                <li class="page-item @(activePage)">
+                    <a asp-action="Index"
+                        asp-route-pageNumber="@(i)"
+                        class="page-link">
+                        @(i)
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+
+
+
