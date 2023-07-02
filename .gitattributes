@@ -62,4 +62,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-VGCApp/wwwroot/ linguist-vendored
+VGCApp/wwwroot/* linguist-vendored
